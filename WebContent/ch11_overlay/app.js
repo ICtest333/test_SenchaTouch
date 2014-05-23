@@ -1,7 +1,7 @@
 Ext.application({
 	name:'MyApp',
 	launch:function(){
-		//오버레이용 툴바		
+		//오버레이(팝업)용 툴바		
 		var overlayToolbar = Ext.create('Ext.Toolbar',{
 			docked:'top',
 			title:'Overlay',
@@ -22,9 +22,9 @@ Ext.application({
 			//오버레이를 띄울수있는지 여부
 			floating:true,
 			//모달여부지정
-			modal:true,
+			modal:true,//부모패널을 탭할수없게할경우
 			//부모패널을 탭할수있는지여부
-			hideOnMaskTap:false,
+			hideOnMaskTap:false,//팝업띄운경우부모영역(바탕)탭할수없게
 			//숨김기본지정
 			hidden:true,
 			width:400,
@@ -48,7 +48,7 @@ Ext.application({
 			    	        	  handler:function(btn,event){
 			    	        		  overlay.setCentered(false);
 			    	        		  overlayToolbar.setTitle('버튼에 위치한 Overlay');//
-			    	        		  overlay.showBy(btn);
+			    	        		  overlay.showBy(btn);//버튼밑에보여지게..
 			    	        	  }
 			    	          },
 			    	          {xtype:'spacer'},
@@ -57,8 +57,8 @@ Ext.application({
 			    	        	  handler:function(btn,event){
 			    	        		  overlay.setCentered(true);
 			    	        		  overlayToolbar.setTitle('가운데 위치한 Overlay');
-			    	        		  Ext.Viewport.add(overlay);
-			    	        		  overlay.show();
+			    	        		  Ext.Viewport.add(overlay);//중앙에보여줄때..
+			    	        		  overlay.show();//중앙에보여줄때..(화면을줄이면UI어색해짐)
 			    	        	  }
 			    	          }
 			    	          ]//inner items
